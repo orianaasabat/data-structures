@@ -30,7 +30,7 @@ public class ArrayBasedListTest {
 	}
 
 	@Test
-	public void testAddingToListAtPosition2() {
+	public void testAddingToListAtPosition2h() {
 		ArrayBasedList<Integer> list = new ArrayBasedList<Integer>();
 		list.add(3);
 		list.add(0, 5);
