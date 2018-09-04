@@ -30,6 +30,14 @@ public class ArrayBasedListTest {
 	}
 
 	@Test
+	public void testAddingToListAtPosition2() {
+		ArrayBasedList<Integer> list = new ArrayBasedList<Integer>();
+		list.add(3);
+		list.add(0, 5);
+		assertEquals(5, (int) list.get(0));
+		assertEquals(2, list.size());
+	}
+	@Test
 	public void testRemovingFromList() {
 		ArrayBasedList<Integer> list = new ArrayBasedList<Integer>();
 		list.add(3);
