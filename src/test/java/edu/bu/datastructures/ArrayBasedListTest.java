@@ -25,11 +25,34 @@ public class ArrayBasedListTest {
 		ArrayBasedList<Integer> list = new ArrayBasedList<Integer>();
 		list.add(3);
 		list.add(0, 5);
-		
+
 		int actual = (int) list.get(0);
 		assertEquals(5, actual);
-		
+
 		assertEquals(2, list.size());
+	}
+
+	@Test
+	public void testAddingToListWithFullArray() {
+		ArrayBasedList<Integer> list = new ArrayBasedList<Integer>(3);
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(4);
+		assertEquals(4, (int) list.size());
+		assertEquals(4, (int) list.get(3));
+	}
+
+	@Test
+	public void testAddingAtIndexToListWithFullArray() {
+		ArrayBasedList<Integer> list = new ArrayBasedList<Integer>(3);
+		list.add(1);
+		list.add(2);
+		list.add(4);
+		list.add(2,3);
+		assertEquals(4, (int) list.size());
+		assertEquals(3, (int) list.get(2));
+		assertEquals(4, (int) list.get(3));
 	}
 
 	@Test
