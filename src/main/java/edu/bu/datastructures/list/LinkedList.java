@@ -19,7 +19,10 @@ public class LinkedList<T> implements List<T> {
 	}
 
 	public void set(int i, T x) {
-		// TODO: impelement the set method and its test cases
+		// TODO: check if index is valid
+		Node<T> targetNode = getNodeAtIndex(i);
+		targetNode.setData(x);
+
 	}
 
 	public void add(int index, T x) {
@@ -59,29 +62,26 @@ public class LinkedList<T> implements List<T> {
 	}
 
 	public T remove(int i) {
-		// TODO implement the remove method and its test case
-		return null;
+		// TODO: check if i is valid
+		Node<T> toRemoveNode;
+		if (i == 0) { // special case when deleting the first node
+			toRemoveNode = head;
+			head = head.next;
+			toRemoveNode.next = null;// remove the pointer to the next node to avoid any future side effects
+			size--;
+			return toRemoveNode.getData();
+		}
+
+		Node<T> predNode = getNodeAtIndex(i - 1);
+		toRemoveNode = predNode.next;
+		predNode.next = toRemoveNode.next;
+		toRemoveNode.next = null;
+		size--;
+		return toRemoveNode.getData();
 	}
 
 	public int getSize() {
 		return size;
-	}
-
-	private T getData(int index) {
-		int i = 0;
-		Node<T> currData = getHead();
-		while (i != index) {
-			currData = currData.getNext();
-			i++;
-		}
-
-		return currData.data;
-	}
-
-	private void addFirstPositionNode(Node<T> newNode) {
-		newNode.setNext(getHead());
-		setHead(newNode);
-		size++;
 	}
 
 	public Node<T> getHead() {
@@ -98,6 +98,27 @@ public class LinkedList<T> implements List<T> {
 
 	public void setTail(Node<T> tail) {
 		this.tail = tail;
+	}
+
+	private void addFirstPositionNode(Node<T> newNode) {
+		newNode.setNext(getHead());
+		setHead(newNode);
+		size++;
+	}
+
+	private T getData(int index) {
+		Node<T> currData = getNodeAtIndex(index);
+		return currData.data;
+	}
+
+	private LinkedList<T>.Node<T> getNodeAtIndex(int index) {
+		int i = 0;
+		Node<T> currNode = getHead();
+		while (i != index) {
+			currNode = currNode.getNext();
+			i++;
+		}
+		return currNode;
 	}
 
 	class Node<T> {

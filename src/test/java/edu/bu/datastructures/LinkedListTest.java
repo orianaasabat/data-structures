@@ -39,7 +39,38 @@ public class LinkedListTest {
 		assertEquals(2, list.size());
 	}
 
-	// TODO add remove test
+	@Test
+	public void testListSet() {
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.add(3);
+		list.add(20);
+		list.set(0, 5);
+		list.set(1, 1);
+		assertEquals(5, (int) list.get(0));
+		assertEquals(1, (int) list.get(1));
+		assertEquals(2, list.size());
+	}
+
+	@Test
+	public void testListRemoveFirstEntry() {
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.add(3);
+		list.add(20);
+		list.remove(0);
+		assertEquals(1, list.size());
+		assertEquals(20, (int) list.get(0));
+	}
+
+	@Test
+	public void testListRemoveEntry() {
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.add(3);
+		list.add(20);
+		list.add(30);
+		list.remove(1);
+		assertEquals(2, list.size());
+		assertEquals(30, (int) list.get(1));
+	}
 	// TODO: add more tests 1) test removing from empty list 2)adding to full list
 	// 3)add test for cases that expect exception
 }
