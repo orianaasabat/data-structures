@@ -1,5 +1,7 @@
 package edu.bu.datastructures.list;
 
+import edu.bu.datastructures.list.LinkedList.Node;
+
 public class DoublyLinkedList<T> implements List<T> {
 	private Node<T> head;
 	private Node<T> tail;
@@ -19,12 +21,26 @@ public class DoublyLinkedList<T> implements List<T> {
 	}
 
 	public void set(int i, T x) {
-		// TODO: impelement the set method and its test cases
+		Node<T> targetNode = getNodeAtIndex(i);
+		targetNode.setData(x);
 	}
 
 	public void add(int index, T x) {
-		// TODO implement this method and its tests
+		Node<T> newNode = new Node<T>();
+		newNode.setData(x);
 
+		if (index == 0) {
+			addFirstPositionNode(newNode);
+			return;
+		}
+		// ...predNode-successorNode (newNode to come in between)
+		Node<T> predNode = getNodeAtIndex(index - 1);
+		Node<T> successorNode = predNode.next;
+		newNode.setNext(successorNode);
+		successorNode.setPrev(newNode);
+		predNode.setNext(newNode);
+		newNode.setPrev(predNode);
+		size++;
 	}
 
 	public void add(T x) {
@@ -44,8 +60,28 @@ public class DoublyLinkedList<T> implements List<T> {
 	}
 
 	public T remove(int i) {
-		// TODO implement the remove method and its test case
-		return null;
+		// TODO: check if i is valid
+		Node<T> toRemoveNode;
+		if (i == 0) { // special case when deleting the first node
+			toRemoveNode = head;
+			head = head.next;
+			head.prev = null;
+			toRemoveNode.next = null;// remove the pointer to the next node to avoid any future side effects
+			size--;
+			return toRemoveNode.getData();
+		}
+		// ...predNode-toRemoveNode-successorNode
+		Node<T> predNode = getNodeAtIndex(i - 1);
+		toRemoveNode = predNode.next;
+		Node<T> successorNode = toRemoveNode.next;// this might be null if i=size-1 (removing last element)
+		predNode.next = successorNode;
+		if (successorNode != null)
+			successorNode.prev = predNode;
+		
+		toRemoveNode.next = null;
+		toRemoveNode.prev = null;
+		size--;
+		return toRemoveNode.getData();
 	}
 
 	public int getSize() {
@@ -79,6 +115,23 @@ public class DoublyLinkedList<T> implements List<T> {
 		this.tail = tail;
 	}
 
+	private Node<T> getNodeAtIndex(int index) {
+		int i = 0;
+		Node<T> currNode = getHead();
+		while (i != index) {
+			currNode = currNode.getNext();
+			i++;
+		}
+		return currNode;
+	}
+
+	private void addFirstPositionNode(Node<T> newNode) {
+		newNode.setNext(getHead());
+		getHead().setPrev(newNode);
+		setHead(newNode);
+		size++;
+	}
+
 	class Node<T> {
 		private T data;
 		private Node<T> next;
@@ -107,7 +160,8 @@ public class DoublyLinkedList<T> implements List<T> {
 		public void setPrev(Node<T> prev) {
 			this.prev = prev;
 		}
+
 	}
 	// TODO: implement the test cases for each public method in this class
-	
+
 }
