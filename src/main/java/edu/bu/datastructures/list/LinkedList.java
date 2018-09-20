@@ -35,14 +35,9 @@ public class LinkedList<T> implements List<T> {
 			return;
 		}
 
-		int i = 0;
-		Node<T> currNode = getHead();
-		while (i != index - 1) {
-			currNode = currNode.getNext();
-			i++;
-		}
-		newNode.setNext(currNode.getNext());
-		currNode.setNext(newNode);
+		Node<T> predNode = getNodeAtIndex(index - 1);
+		newNode.setNext(predNode.getNext());
+		predNode.setNext(newNode);
 		size++;
 
 	}
