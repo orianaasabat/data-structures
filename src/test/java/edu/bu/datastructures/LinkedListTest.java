@@ -62,6 +62,14 @@ public class LinkedListTest {
 	}
 
 	@Test
+	public void testListRemoveFirstAndOnlyEntry() {
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.add(3);
+		list.remove(0);
+		assertEquals(0, list.size());
+	}
+
+	@Test
 	public void testListRemoveEntry() {
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		list.add(3);
