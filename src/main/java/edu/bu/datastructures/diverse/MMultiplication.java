@@ -8,9 +8,9 @@ import java.util.concurrent.TimeUnit;
 public class MMultiplication {
 
 	public static void main(String[] args) throws InterruptedException {
-		int common = 2000;
-		int aRows = 2000;
-		int bColumns = 2000;
+		int common = 1000;
+		int aRows = 1000;
+		int bColumns = 1000;
 		int[][] a = new int[aRows][common];
 		int[][] b = new int[common][bColumns];
 		int[][] resultArray = new int[aRows][bColumns];

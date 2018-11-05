@@ -10,7 +10,7 @@ import edu.bu.datastructures.sorting.InsertionSort;
 public class BubbleSortTest {
 	@Test
 	public void testSort() {
-		int[] data = { 1, 23, 4, 2, 13 };
+		int[] data = { 6, 44, 5, 8, 2, 7 };
 		BubbleSort bubbleSort = new BubbleSort();
 		bubbleSort.sort(data);
 		assertEquals(1, data[0]);

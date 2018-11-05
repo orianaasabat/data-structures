@@ -9,10 +9,10 @@ import edu.bu.datastructures.sorting.QuickSort;
 public class QuickSortTest {
 	@Test
 	public void testSort() {
-		int[] a = { 55,1, 22, 3, 44, 5 };
+		int[] a = { 6, 44, 5, 8, 2, 7 };
 		QuickSort quickSort = new QuickSort();
 		quickSort.sort(a);
 		System.out.println(Arrays.toString(a));
-		
+
 	}
 }

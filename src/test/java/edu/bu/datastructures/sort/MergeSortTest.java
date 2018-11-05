@@ -11,7 +11,7 @@ import edu.bu.datastructures.sorting.MergeSort;
 public class MergeSortTest {
 	@Test
 	public void testSort() {
-		int[] data = { 1, 23, 4, 2, 13 };
+		int[] data = { 6, 44, 5, 8, 2, 7 };
 		MergeSort bubbleSort = new MergeSort();
 		bubbleSort.sort(data);
 		assertEquals(1, data[0]);
