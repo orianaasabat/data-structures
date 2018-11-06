@@ -8,6 +8,27 @@ public class LinkedList<T> implements List<T> {
 	public LinkedList() {
 	}
 
+	// TODO: LAB EXAM
+	/*
+	 * swaps the nodes at positions i and j. e.g. if the input is
+	 * nodeA->nodeB->nodeC-nodeD->nodeE->null then a call for swap(1,3) will result
+	 * in nodeA->nodeD->nodeC-nodeB->nodeE->null
+	 */
+
+	public void swap(int i, int j) {
+
+	}
+
+	// TODO: LAB EXAM
+	/*
+	 * reverse the list. e.g. if the input is nodeA->nodeB->nodeC->null then a call
+	 * for reverse() will result in nodeC->nodeB->nodeA->null and head points to
+	 * nodeC
+	 */
+	public void reverse() {
+
+	}
+
 	public int size() {
 		return size;
 	}
@@ -115,8 +136,6 @@ public class LinkedList<T> implements List<T> {
 		}
 		return currNode;
 	}
-
-
 
 	class Node<T> {
 		private T data;
