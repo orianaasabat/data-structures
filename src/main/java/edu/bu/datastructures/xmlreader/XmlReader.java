@@ -12,7 +12,7 @@ import org.w3c.dom.NodeList;
 public class XmlReader {
 
 	public static void main(String[] args) throws Exception {
-		File xmlFile = new File("c://tmp//bethlehemSmall.osm");
+		File xmlFile = new File("C:\\teaching\\BU\\data structures\\project//Bethlehem-jerusalem.xml");
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = dBuilder.parse(xmlFile);
@@ -20,12 +20,16 @@ public class XmlReader {
 		System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 
 		NodeList nList = doc.getElementsByTagName("node");
-		for (int i = 0; i < nList.getLength(); i++) {
+
+		int length = nList.getLength();
+		for (int i = 0; i < length; i++) {
 			Element elementNode = (Element) nList.item(i);
 			System.out.println("node id " + elementNode.getAttribute("id") + " at lat,lon "
 					+ elementNode.getAttribute("lat") + "," + elementNode.getAttribute("lon"));
+			if (i % 10000 == 0)
+				System.out.println(i);
 		}
-		
+
 		NodeList ways = doc.getElementsByTagName("way");
 		for (int i = 0; i < ways.getLength(); i++) {
 			Element elementWay = (Element) ways.item(i);
